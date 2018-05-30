@@ -1,0 +1,62 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href=" {% static "static/css/bootstrap.css" %}" rel="stylesheet"/>
+    <style>
+        html, body{
+            height: 100%;
+            max-width: 100%;
+
+        }
+        .general-container{
+            background-image: url({% static 'bg.jpg'%});
+            height: 100%;
+            color: white;
+            font-weight: 100;
+            line-height: 50px;
+        }
+        .top-container{
+            padding-top: 10%;
+            color: white;
+
+        }
+        .title{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="general-container">
+    <div class="container top-container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h1 class="title">My site coming soon</h1>
+                <div>
+                    <form action="" method="post" class="form-inline text-center">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>
+                                <input type="text" placeholder="enter your email" name="{{ forms.email.name }}" class="form-control">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="text" placeholder="enter your name" name="{{ forms.name.name }}" class="form-control">
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

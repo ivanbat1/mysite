@@ -1,0 +1,63 @@
+<style>
+
+    .basket-items{
+        position: absolute;
+        top: 50px;
+        width: 100%;
+        background-color: whitesmoke;
+        z-index: 999;
+        padding: 10px;
+    }
+
+</style>
+]
+
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="/">My project</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+                    <a href="" class="dropdown-toggle basket-container" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Корзина <span id="basket_total_amount caret"></span><span class="badge" id="basket_total_nmb">
+                        {% if products_total_nmb %}
+                            ({{ products_total_nmb }})
+                        {% else %}
+                            (0)
+                        {% endif %}
+                    </span></a>
+
+
+
+                        <ul class="dropdown-menu basket-items hidden">
+                            {% for product_in_basket in products_in_basket %}
+                                <li>
+                                    {{ product_in_basket.product.name }} {{ product_in_basket.nmb }} шт.
+                                    по {{ product_in_basket.price_per_item }} грн.
+                                    <a class="delete-item" href="/" data-product_id="{{ product_in_basket.id }}">x</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="{% url 'checkout'  %}">
+                                    Оформить заказ
+                                </a>
+                            </li>
+                        </ul>
+
+
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
