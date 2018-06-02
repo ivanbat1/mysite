@@ -73,3 +73,14 @@ def checkout(request):
         else:
             print("no")
     return render(request, 'orders/checkout.html', locals())
+
+
+def search(request):
+    if request.POST:
+        products_images = ProductImage.objects.filter(is_active=True, is_main=True,
+                                                          product__is_active=True,
+                                                          product__name=request.POST.get('input_text'),
+                                                          # product__price__range=(int(request.POST.get('min-price')), int(request.POST.get('max-price'))),
+                                                          )
+        print(request.POST.get('input_text'), request.POST.get('min-price'), request.POST.get('max-price'))
+    return render(request, 'products/search.html', locals())

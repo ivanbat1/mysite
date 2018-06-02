@@ -26,5 +26,14 @@
       <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
       <jdbc-url>jdbc:hsqldb:file:$PROJECT_DIR$/jdbc:postgresql://127.0.0.1:5432/postgres/</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="test_db@localhost" uuid="e51381f2-f019-45f0-a90e-9e5f6752cda9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/test_db</jdbc-url>
+      <driver-properties>
+        <property name="ApplicationName" value="DataGrip" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

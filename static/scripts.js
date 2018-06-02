@@ -114,4 +114,28 @@ $(document).ready(function(){
 
     calculatingBasketAmount();
 
+
+    var i;
+    i = 0;
+    $('#prev').click(function (e) {
+        e.preventDefault();
+        var images = document.querySelectorAll('#my img');
+        images[i].style.display = 'none';
+        i--;
+        if(i < 0){
+            i = images.length - 1;
+        }
+        images[i].style.display = 'block';
+    });
+    $('#next').click(function (e) {
+        e.preventDefault();
+        var images = document.querySelectorAll('#my img');
+        images[i].style.display = 'none';
+        i++;
+        if(i >= images.length){
+            i = 0;
+        }
+        images[i].style.display = 'block';
+    });
+
 });
