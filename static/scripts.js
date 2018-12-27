@@ -11,11 +11,12 @@ $(document).ready(function(){
         csrf_token = $('#form_buying_product').find('[name="csrfmiddlewaretoken"]').val();
         data["csrfmiddlewaretoken"] = csrf_token;
 
-        if (is_delete){
+        if (is_delete) {
             data["is_delete"] = true;
         }
 
          var url = form.attr("action");
+
 
         console.log(data);
          $.ajax({
@@ -136,6 +137,10 @@ $(document).ready(function(){
             i = 0;
         }
         images[i].style.display = 'block';
+    });
+
+    $('.carousel').carousel({
+      interval: 2000
     });
 
 });

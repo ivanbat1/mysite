@@ -145,7 +145,7 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 STATICFILES_DIRS = [
     ('static', '/home/ivan/PycharmProjects/untitled14/static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_prod")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_prod")
 
 MEDIA_URL = '/media/'
 

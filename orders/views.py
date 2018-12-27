@@ -14,6 +14,7 @@ def basket_adding(request):
     product_id = data.get("product_id")
     nmb = data.get("nmb")
     is_delete = data.get("is_delete")
+    print(is_delete)
 
     if is_delete == 'true':
         ProductInBasket.objects.filter(id=product_id).update(is_active=False)
@@ -59,7 +60,6 @@ def checkout(request):
                     product_in_basket_id = name.split("product_in_basket_")[1]
                     product_in_basket = ProductInBasket.objects.get(id=product_in_basket_id)
                     print(type(value))
-
                     product_in_basket.nmb = value
                     product_in_basket.order = order
                     product_in_basket.save(force_update=True)
@@ -68,11 +68,13 @@ def checkout(request):
                                                   price_per_item=product_in_basket.price_per_item,
                                                   total_price=product_in_basket.total_price,
                                                   order=order)
-
+                    ProductInBasket.objects.filter(id=product_in_basket_id).update(is_active=False)
             return HttpResponseRedirect(request.META['HTTP_REFERER'])
         else:
             print("no")
     return render(request, 'orders/checkout.html', locals())
+
+
 
 
 def search(request):
@@ -82,5 +84,4 @@ def search(request):
                                                           product__name=request.POST.get('input_text'),
                                                           # product__price__range=(int(request.POST.get('min-price')), int(request.POST.get('max-price'))),
                                                           )
-        print(request.POST.get('input_text'), request.POST.get('min-price'), request.POST.get('max-price'))
     return render(request, 'products/search.html', locals())
